@@ -1,0 +1,27 @@
+---
+source: tests/test.rs
+expression: diff
+info:
+  lhs:
+    type: object
+  rhs:
+    $defs:
+      Hello:
+        type: array
+    $ref: "#/$defs/Hello"
+input_file: tests/fixtures/ref/factor_out_definitions_using_defs_keyword_and_change.json
+---
+[
+    Change {
+        path: "",
+        change: TypeRemove {
+            removed: Object,
+        },
+    },
+    Change {
+        path: "",
+        change: TypeAdd {
+            added: Array,
+        },
+    },
+]

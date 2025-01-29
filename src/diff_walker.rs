@@ -350,12 +350,11 @@ impl<F: FnMut(Change)> DiffWalker<F> {
     }
 
     fn resolve_ref<'a>(root_schema: &'a RootSchema, reference: &str) -> Option<&'a Schema> {
-        if let Some(definition_name) = reference.strip_prefix("#/definitions/") {
-            let schema_object = root_schema.definitions.get(definition_name)?;
-            Some(schema_object)
-        } else {
-            None
-        }
+        let definition_name = reference
+            .strip_prefix("#/definitions/")
+            .or(reference.strip_prefix("#/$defs/"))
+            .unwrap_or(reference);
+        root_schema.definitions.get(definition_name)
     }
 
     fn resolve_references(

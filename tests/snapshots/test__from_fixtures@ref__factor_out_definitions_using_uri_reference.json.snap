@@ -1,0 +1,14 @@
+---
+source: tests/test.rs
+expression: diff
+info:
+  lhs:
+    type: object
+  rhs:
+    $defs:
+      Hello:
+        type: object
+    $ref: Hello
+input_file: tests/fixtures/ref/factor_out_definitions_using_uri_reference.json
+---
+[]
