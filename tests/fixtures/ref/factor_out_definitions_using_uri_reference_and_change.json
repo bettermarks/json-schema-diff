@@ -1,0 +1,11 @@
+{
+  "lhs": {
+    "type": "object"
+  },
+  "rhs": {
+    "$ref": "Hello",
+    "$defs": {
+      "Hello": {"type": "array"}
+    }
+  }
+}

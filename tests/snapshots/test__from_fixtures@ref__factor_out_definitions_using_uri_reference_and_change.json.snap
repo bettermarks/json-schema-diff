@@ -1,0 +1,27 @@
+---
+source: tests/test.rs
+expression: diff
+info:
+  lhs:
+    type: object
+  rhs:
+    $defs:
+      Hello:
+        type: array
+    $ref: Hello
+input_file: tests/fixtures/ref/factor_out_definitions_using_uri_reference_and_change.json
+---
+[
+    Change {
+        path: "",
+        change: TypeRemove {
+            removed: Object,
+        },
+    },
+    Change {
+        path: "",
+        change: TypeAdd {
+            added: Array,
+        },
+    },
+]
